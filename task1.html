@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colorful Section Boxes with Proper Spacing</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Progress Bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: #4caf50;
+            z-index: 1100;
+            transition: width 0.25s;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 0;
+            transition: box-shadow 0.3s;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Content Styling */
+        .content {
+            padding-top: 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        /* Section Box Styling */
+        .section {
+            margin: 80px 20px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            color: white;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Different Background Colors */
+        #services {
+            background: #ff7043;
+        }
+
+        #products {
+            background: #42a5f5;
+        }
+
+        #about {
+            background: #66bb6a;
+        }
+
+        #contact {
+            background: #ab47bc;
+        }
+
+        /* Example List Styling */
+        ul {
+            text-align: left;
+            max-width: 700px;
+            margin: 20px auto 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            background: rgba(255,255,255,0.2);
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progressBar"></div>
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#products" class="nav-link">Products</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#contact" class="nav-link">Contact</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+    <h1 id="home">Welcome to Our Website</h1>
+    <p>Scroll down to explore different sections with proper spacing and vibrant design.</p>
+
+    <div class="section" id="services">
+        <h2>Our Services</h2>
+        <p>We provide high-quality digital services to help your business grow:</p>
+        <ul>
+            <li>Custom Website Development</li>
+            <li>Responsive Web Design</li>
+            <li>E-commerce Solutions</li>
+            <li>SEO Optimization</li>
+            <li>24/7 Technical Support</li>
+        </ul>
+    </div>
+
+    <div class="section" id="products">
+        <h2>Our Products</h2>
+        <p>Discover our latest products designed for performance and usability:</p>
+        <ul>
+            <li>Smart Portfolio Templates</li>
+            <li>Online Booking Systems</li>
+            <li>Interactive Business Dashboards</li>
+            <li>Custom CRM Solutions</li>
+        </ul>
+    </div>
+
+    <div class="section" id="about">
+        <h2>About Us</h2>
+        <p>We are a team of passionate developers and designers focused on:</p>
+        <ul>
+            <li>Building scalable digital platforms</li>
+            <li>Providing user-friendly experiences</li>
+            <li>Focusing on security and performance</li>
+            <li>Bringing innovative ideas to life</li>
+        </ul>
+    </div>
+
+    <div class="section" id="contact">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you! Reach out to us for collaboration:</p>
+        <ul>
+            <li>Email: contact@ourcompany.com</li>
+            <li>Phone: +1 234 567 8901</li>
+            <li>Office Hours: Mon - Fri, 9:00 AM - 6:00 PM</li>
+        </ul>
+    </div>
+</div>
+
+<!-- JavaScript for Scroll Interactivity -->
+<script>
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    const progressBar = document.getElementById('progressBar');
+    const sections = document.querySelectorAll('.section');
+    const links = document.querySelectorAll('.nav-link');
+
+    // Navbar Shadow on Scroll
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+
+    // Progress Bar Width
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+
+    // Section Fade-in Animation
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.classList.add('visible');
+        }
+    });
+
+    // Active Link Highlight
+    sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        const bottom = top + section.offsetHeight;
+        const scrollPos = window.scrollY;
+
+        const id = section.getAttribute('id');
+        if (scrollPos >= top && scrollPos < bottom) {
+            links.forEach(link => link.classList.remove('active'));
+            document.querySelector(`.navbar a[href="#${id}"]`).classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

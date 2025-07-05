@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sairaj Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background: #444;
+            display: flex;
+            justify-content: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 15px 10px;
+            display: block;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .container.active {
+            display: block;
+        }
+        .profile-pic {
+            width: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+            border: 4px solid #333;
+        }
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .skill {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        .skill:hover {
+            background: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Sairaj - Web Developer</h1>
+</header>
+
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About Me</a>
+    <a onclick="showSection('projects')">Projects</a>
+    <a onclick="showSection('contact')">Contact</a>
+</nav>
+
+<!-- Home Section -->
+<section class="container" id="home">
+    <img src="sai photo.jpg" alt="Profile Photo" class="profile-pic">
+    <h2>Hello, I'm Sairaj</h2>
+    <p style="text-align: center;">A passionate Web Developer skilled in building responsive and interactive websites using HTML, CSS, JavaScript, and modern frameworks.</p>
+
+    <h3 style="text-align: center; margin-top: 20px;">My Skills</h3>
+    <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Responsive Design</div>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section class="container" id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm Sairaj, a dedicated web developer with a strong foundation in front-end development and a passion for creating seamless user experiences. With over 2 years of hands-on experience, I have built multiple projects ranging from simple landing pages to dynamic web applications.</p>
+
+    <h3>Education</h3>
+    <ul>
+        <li>Bachelor of Computer Science - ABC University (2020)</li>
+        <li>Web Development Certification - XYZ Institute (2021)</li>
+    </ul>
+
+    <h3>Professional Experience</h3>
+    <ul>
+        <li>Junior Web Developer - Creative Tech (2021 - 2023)</li>
+        <li>Freelance Projects - Portfolio of websites and applications for clients</li>
+    </ul>
+</section>
+
+<!-- Projects Section -->
+<section class="container" id="projects">
+    <h2>My Projects</h2>
+    <ul>
+        <li><strong>Portfolio Website:</strong> A responsive portfolio to showcase my work and skills.</li>
+        <li><strong>Weather App:</strong> A real-time weather application using API integration.</li>
+        <li><strong>E-commerce Template:</strong> Designed a responsive layout for online stores.</li>
+    </ul>
+</section>
+
+<!-- Contact Section -->
+<section class="container" id="contact">
+    <h2>Contact Me</h2>
+    <p>You can reach out to me via email or phone:</p>
+    <ul>
+        <li>Email: sairaj@example.com</li>
+        <li>Phone: +91-9876543210</li>
+    </ul>
+</section>
+
+<footer>
+    &copy; 2025 Sairaj | All Rights Reserved
+</footer>
+
+<script>
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.container');
+    sections.forEach(section => section.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+}
+
+// Show Home by default
+showSection('home');
+</script>
+
+</body>
+</html>
